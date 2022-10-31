@@ -1,0 +1,78 @@
+<!-- Importing stylesheet -->
+<link rel="stylesheet" href="./css/home.css">
+
+<!-- Form For Taking Habit List -->
+
+
+<!-- Form For Taking Habit List -->
+<div>
+    <form class="habit-form" action="/add-habit" method="POST">
+        <div class="labelContainer">
+            <div class="label">Habit Name</div>
+
+            <input type="text" name="habit_name" class="habit-details-input"
+                placeholder="Enter Habit You Want To Create" required>
+        </div>
+        <div class="labelContainer">
+            <div class="label">Starting Date</div>
+            <input type="date" name="start">
+        </div>
+        <div class="labelContainer">
+            <div class="label">Ending Date</div>
+            <input type="date" name="end">
+        </div>
+
+        <div class="labelContainer">
+            <button id="addBtn" class="btn btn-primary type=" submit">Add</button>
+        </div>
+    </form>
+</div>
+
+<%if(habitList){%>
+
+    <% for(habit of habitList){ %>
+
+        <div class="listContainer">
+            <div class="habitRow">
+                <div class="habitDsc">
+                    <a class="habitShowAction" href="/view/<%= habit.id%>">
+                        <div>
+                            <%=habit.habit_name%>
+                        </div>
+                    </a>
+                </div>
+                <div class="recordActions">
+                    <div class="habitRecords">
+                        <div class="recordLabel">
+                            <h5>Current Sreak</h5>
+                            <%=habit.current_Streak%> Day
+                        </div>
+                        <div class="recordLabel">
+                            <h5>Best Sreak</h5>
+                            <%=habit.best_Streak%> Best
+                        </div>
+                        <div class="recordLabel">
+                            <h5>Success Days</h5>
+                            <%=habit.success_Days+" /"+habit.totalDaysTillDate%>
+                        </div>
+                    </div>
+                    <div class="habitAction">
+                        <div class="recordLabel">
+                            <div>
+                                <a href="/delete/<%=habit._id%>"><button class="btn btn-danger">Delete</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <%} %>
+
+            <%}else{%>
+
+                <div>
+                    There is No Habits in your list.
+                </div>
+
+                <%}%>

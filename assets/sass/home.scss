@@ -1,0 +1,106 @@
+// Styling Form
+.habit-form {
+   display: flex;
+   flex-direction: column;
+   border: px solid black;
+   background-color: rgb(250, 249, 246);
+   border-radius: 8px;
+   box-shadow: 20px 20px 40px rgba(60, 60, 150, 0.5);
+   width: 40rem;
+
+   .labelContainer {
+      margin-top: 25px;
+      align-items: center;
+      display: flex;
+      justify-content: space-around;
+   }
+   .label {
+      font-size: 1.2rem;
+   }
+
+   input {
+      height: 2rem;
+      margin-left: 10px;
+      font-size: 1rem;
+      padding: 0.3rem;
+      padding-left: 0.4rem;
+      width: 25rem;
+      border-radius: 25px;
+      border: 1px solid black;
+   }
+
+   // buttom
+   #addBtn {
+      margin-bottom: 20px;
+   }
+}
+
+//List to display
+
+.listContainer {
+   margin-top: 20px;
+   display: flex;
+   flex-direction: column;
+   width: 90%;
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+   // border: 1px solid black;
+
+   .habitRow {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      width: 100%;
+
+      // align-items: center;
+      border-radius: 8px;
+      box-shadow: 20px 20px 40px rgba(60, 60, 150, 0.25);
+
+      justify-content: space-between;
+      padding: 10px 25px;
+      // padding-right: 10px;
+      
+      background-color: rgb(250, 249, 246);
+   }
+   .habitDsc {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-left: 15px;
+      font-size: 1.2rem;
+      margin-top: 5px;
+      margin-bottom: 5px;
+   }
+   .habitDsc > button {
+      margin-right: 20px;
+   }
+
+   .habitRecords {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: 25rem;
+   }
+
+   .recordActions {
+      margin-top: 5px;
+      margin-bottom: 5px;
+      display: flex;
+      gap: 67px;
+      justify-content: space-around;
+   }
+
+   .recordLabel{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      h5{
+         font-size: 0.9rem;
+      }
+      
+   }
+}
