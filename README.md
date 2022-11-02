@@ -19,12 +19,8 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
+
   </ol>
 </details>
 
@@ -41,7 +37,7 @@ A basic Habit Tracking System. Tech Stack : HTML, CSS, JS, Node.js
   - Done - Mark the habit as done for a day.
   - Not done - Mark the habit as not done for a day
   - None - User did not take any action on a habit for a day
-* A view to show all current habits. Here give an add button where you can add a new habit to track. The image is just an example, you can structure/design however you want, showing the counts etc is not mandatory
+* A view to show all current habits. Here give an add button where you can add a new habit to track. 
 
 * A view to display 7 days of each habit
   - Show today where user can mark todays habit
@@ -49,17 +45,7 @@ A basic Habit Tracking System. Tech Stack : HTML, CSS, JS, Node.js
   - A user can toggle between the three (above mentioned) statuses of a habit i.e. I can change today’s status as done, not done or none anytime.
   - Also I should be able to change any of the previous days status i.e. I can change the status of a habit for yesterday, day before yesterday or any previous 6 days as well
 
-* You can create one default user and attach habits to that user (not a necessity, but a plus point). No need for authentication.
-* Store the data in a DB.
-* [BONUS FEATURE (Not mandatory for the test)]: You can keep track of the longest streak and the number of days the user completed that habit since the user created the habit (like in the detail view above the user did 38 workouts from 82 days).
-* You can take inspiration from habit trackers just google them
-
-
-
-
-Use the `BLANK_README.md` to get started.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+* You can keep track of the longest streak and the number of days the user completed that habit since the user created the habit (like in the detail view above the user did 38 workouts from 82 days).
 
 
 
@@ -70,11 +56,6 @@ Here is the Technology Stack of this Application. which I have used to Built thi
 * NodeJS
 * HTML
 * SCSS
-
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -104,64 +85,56 @@ _Below is an example of how you can instruct your audience on installing and set
    npm install
    ```
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
-<!-- USAGE EXAMPLES -->
+
+  
 ## Directory Structure and flow of The Code
 This code follows MVC pattern and hence everything is differentiated and well managed:
 
-Habit_tracker
-    |-----assets
-    |       |--- css
-    |       |     |-- habit.css
-    |       |     |-- home.css
-    |       |     └-- layout.css
-    |       |--- js
-    |       |     |-- habit.js
-    |       |     └-- moment.js
-    |       |--- sass
-    |             |-- habit.scss
-    |             |-- home.scss
-    |             └-- layout.scss
-    |------ config
-    |         └--- mongoose.js
-    |------ controllers
-    |         └--- habit_controllers.js
-    |------ models
-    |         └--- habit.js
-    |------ routers
-    |         └--- index.js
-    |------ views
-    |         |--- habit..ejs
-    |         |--- home.ejs
-    |         └--- layout.ejs
-    |------ .gitignore
-    |------ app.js
-    |------ package.json
-    |------ package-lock.json
-    └------ README.md
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
+    Habit_tracker
+        |-----assets
+        |       |--- css
+        |       |     |-- habit.css
+        |       |     |-- home.css
+        |       |     └-- layout.css        
+        |       |--- sass
+        |             |-- habit.scss
+        |             |-- home.scss
+        |             └-- layout.scss
+        |------ config
+        |         └--- mongoose.js
+        |------ controllers
+        |         └--- habitController.js
+        |------ models
+        |         └--- habit.js
+        |         └--- user.js
+        |------ routers
+        |         └--- index.js
+        |------ views
+        |         |--- habit..ejs
+        |         |--- home.ejs
+        |         └--- layout.ejs
+        |------ .gitignore
+        |------ index.js
+        |------ package.json
+        |------ package-lock.json
+        └------ README.md
 
 <!-- CONTRIBUTING -->
 ## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
 If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
 Don't forget to give the project a star! Thanks again!
 
 1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
+2. Create your Feature Branch 
+3. Commit your Changes 
+4. Push to the Branch 
 5. Open a Pull Request
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 
 
