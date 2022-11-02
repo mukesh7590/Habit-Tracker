@@ -1,5 +1,5 @@
 # Habit-Tracker
-  - Coding Ninjas Skills Test Assignment
+  - Coding Ninjas Skill Test Assignment
  
 
 <!-- TABLE OF CONTENTS -->
