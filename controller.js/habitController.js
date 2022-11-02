@@ -3,62 +3,33 @@ const User = require("../models/user");
 const moment = require("moment");
 const asyncHandler = require("express-async-handler");
 
-function recordsCalculate(completionsMap) {
-   let bestScore = 0,
-      currentScore = 0,
-      success = 0,
-      totalDays = 0;
-
-   for (d of completionsMap) {
-      totalDays += 1;
-      if (d[1] == "Done") {
-         currentScore += 1;
-         if (currentScore > bestScore) {
-            bestScore = currentScore;
-         }
-         success += 1;
-      } else {
-         if (d[0] == moment().format("DD/MM/YYYY").toString()) {
-            break;
-         } else {
-            currentScore = 0;
-         }
-      }
-   }
-   return {
-      bestScore,
-      currentScore,
-      success,
-      totalDays,
-   };
-}
-
+// home Action fetching the GUEST user and rendering the habit lists.
 const home = asyncHandler(async (req, res) => {
    const user = await User.findOne({ userName: "Guest" }).populate("habits");
-
-   // console.log("data => ", user);
    return res.render("home", { habitList: user.habits });
 });
 
+// create the Habit
 const add = asyncHandler(async (req, res) => {
+   // creating the habit
    const habit = await Habit.create({
       habit_name: req.body.habit_name,
       start: req.body.start,
       end: req.body.end,
    });
 
+   //getting all the days
    var start = moment(habit.start, "DD/MM/YYYY");
    var end = moment(habit.end, "DD/MM/YYYY");
    var today = moment(new Date(), "DD/MM/YYYY");
 
-   console.log(today, start, end);
-
+   // total days from today to start
    let totalDaysTillDate = today.diff(start, "days");
-   console.log("totalDaysTillDate => ", totalDaysTillDate);
 
-   //Difference in number of days
+   //total days between Starting and Ending date
    let totalDays = end.diff(start, "days");
 
+   // filled the MAP with NONE
    let completionsMap = new Map();
    for (let d = 0; d <= totalDays; d++) {
       var new_date = moment(habit.start, "DD/MM/YYYY");
@@ -66,6 +37,7 @@ const add = asyncHandler(async (req, res) => {
       completionsMap.set(date, "None");
    }
 
+   // updating the MAP in Habit DB
    await Habit.updateOne(
       { _id: habit._id },
       {
@@ -75,6 +47,8 @@ const add = asyncHandler(async (req, res) => {
          },
       }
    );
+
+   // finding the user and pushing the Update MAP into the habit attribute of User DB.
    const user = await User.findOne({ userName: "Guest" });
    user.habits.push(habit);
    user.save();
@@ -82,10 +56,14 @@ const add = asyncHandler(async (req, res) => {
    return res.redirect("back");
 });
 
+// showing the habit
 const showHabit = asyncHandler(async (req, res) => {
+   // find the habit by the ID.
    const habit = await Habit.findById(req.params.id);
    let date = new Date();
    let arr = [];
+
+   // loop for only last 7 days from today
    for (let d = 6; d >= 0; d--) {
       let st = moment(habit.start).format("DD/MM/YYYY");
       const previous = new Date(date.getTime());
@@ -101,24 +79,26 @@ const showHabit = asyncHandler(async (req, res) => {
       }
    }
 
-   //Difference in number of days
-
+   // redering the Habit and its last 7 days status
    return res.render("habit", {
       habit: habit,
       lastDays: arr,
    });
 });
 
+// Habit action status
 const takeAction = asyncHandler(async (req, res) => {
-   console.log("take action calling");
+   // finding the habit by ID
    const habit = await Habit.findById(req.params.id);
 
    let date = moment()
       .subtract(req.body.dayBefore, "days")
       .format("DD/MM/YYYY");
 
+   //temprary store the habit completions MAP
    const completionsMap = habit.completions;
 
+   // toggling the staus here
    switch (completionsMap.get(date)) {
       case "Done":
          completionsMap.set(date, "Not-Done");
@@ -132,13 +112,12 @@ const takeAction = asyncHandler(async (req, res) => {
    }
 
    // calculate the records
-
-   // const record = recordsCalculate(completionsMap);
    let bestScore = 0,
       currentScore = 0,
       success = 0,
       totalDays = 0;
 
+   // logic for getting records
    for (d of completionsMap) {
       totalDays++;
       if (d[0] == moment().format("DD/MM/YYYY").toString()) {
@@ -184,12 +163,16 @@ const takeAction = asyncHandler(async (req, res) => {
    return res.redirect("back");
 });
 
+// Habit delete action
 const habitDelete = asyncHandler(async (req, res) => {
+   // find the habit and remove it
    let habit = await Habit.findById(req.params.id);
    habit.remove();
 
+   // finding the user
    const user = await User.findOne({ userName: "Guest" });
 
+   // pull the habit_ID from habit attribute of User model
    let post = await User.findByIdAndUpdate(user._id, {
       $pull: { habits: req.params.id },
    });
@@ -197,29 +180,4 @@ const habitDelete = asyncHandler(async (req, res) => {
    return res.redirect("back");
 });
 
-const extendDate = asyncHandler(async (req, res) => {
-   const habit = await Habit.findById(req.params.id);
-
-   let completionsMap = habit.completions;
-
-   // var start = moment(habit.start, "DD/MM/YYYY");
-   var end = moment(habit.end+1, "DD/MM/YYYY");
-   var today = moment(new Date(), "DD/MM/YYYY");
-   let totalDays = end.diff(start, "days");
-
-   for (let d = 0; d <= totalDays; d++) {
-      var new_date = moment(habit.start, "DD/MM/YYYY");
-      let date = new_date.add(d, "days").format("DD/MM/YYYY");
-      completionsMap.set(date, "None");
-   }
-   await Habit.updateOne(
-      { _id: habit._id },
-      {
-         $set: {
-            completions: completionsMap,
-         },
-      }
-   );
-});
-
-module.exports = { home, add, showHabit, takeAction, habitDelete, extendDate };
+module.exports = { home, add, showHabit, takeAction, habitDelete };

@@ -5,16 +5,22 @@ const {
    showHabit,
    takeAction,
    habitDelete,
-   extendDate,
 } = require("../controller.js/habitController");
 
 // For rendering different pages and controllers
-
+// home page route
 router.get("/", home);
+
+// adding the habit route
 router.post("/add-habit", add);
+
+// deleting the habit route
 router.get("/delete/:id", habitDelete);
+
+// show the habit route
 router.get("/view/:id", showHabit);
+
+// actions taken by the user
 router.post("/active/:id", takeAction);
-router.post("/update/:id", extendDate);
 
 module.exports = router;
