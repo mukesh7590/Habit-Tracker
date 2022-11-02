@@ -20,12 +20,8 @@
       </ul>
     </li>
     <li><a href="#contributing">Contributing</a></li>
-
   </ol>
 </details>
-
-
-
 
 ## About The Project
 You cannot able to keep your habit or want to create new habit. Then try this amazing app Habit Tracker
@@ -38,16 +34,12 @@ A basic Habit Tracking System. Tech Stack : HTML, CSS, JS, Node.js
   - Not done - Mark the habit as not done for a day
   - None - User did not take any action on a habit for a day
 * A view to show all current habits. Here give an add button where you can add a new habit to track. 
-
 * A view to display 7 days of each habit
   - Show today where user can mark todays habit
   - And show the previous 6 days and the status of that habit for each day
   - A user can toggle between the three (above mentioned) statuses of a habit i.e. I can change today’s status as done, not done or none anytime.
   - Also I should be able to change any of the previous days status i.e. I can change the status of a habit for yesterday, day before yesterday or any previous 6 days as well
-
 * You can keep track of the longest streak and the number of days the user completed that habit since the user created the habit (like in the detail view above the user did 38 workouts from 82 days).
-
-
 
 ### Built With
 Here is the Technology Stack of this Application. which I have used to Built this Application.
@@ -73,9 +65,6 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
-
-
 1. Clone the repo
    ```sh
    git clone https://github.com/your_username_/Project-Name.git
@@ -84,11 +73,6 @@ _Below is an example of how you can instruct your audience on installing and set
    ```sh
    npm install
    ```
-
-
-
-
-
   
 ## Directory Structure and flow of The Code
 This code follows MVC pattern and hence everything is differentiated and well managed:
