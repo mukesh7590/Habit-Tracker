@@ -1,5 +1,6 @@
 # Habit-Tracker
   - Coding Ninjas Skills Test Assignment
+ 
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -29,8 +30,10 @@
 
 
 
-<!-- ABOUT THE PROJECT -->
+
 ## About The Project
+You cannot able to keep your habit or want to create new habit. Then try this amazing app Habit Tracker
+A basic Habit Tracking System. Tech Stack : HTML, CSS, JS, Node.js
 
 ### Features :
 * Add multiple habits to track like reading a book, going to the gym etc.
@@ -61,14 +64,12 @@ Use the `BLANK_README.md` to get started.
 
 
 ### Built With
-
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-
+Here is the Technology Stack of this Application. which I have used to Built this Application.
 * MongoDB
-* ExpressJS
-* EJS
+* Express
+* NodeJS
 * HTML
-* CSS
+* SCSS
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -77,9 +78,9 @@ This section should list any major frameworks/libraries used to bootstrap your p
 
 <!-- GETTING STARTED -->
 ## Getting Started
-
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+   * Clone this project
+   * Start by installing npm and mongoDB if you don't have them already.
+   * Run the Mongo Server.
 
 ### Prerequisites
 
@@ -102,21 +103,45 @@ _Below is an example of how you can instruct your audience on installing and set
    ```sh
    npm install
    ```
-3. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
 <!-- USAGE EXAMPLES -->
-## Usage
+## Directory Structure and flow of The Code
+This code follows MVC pattern and hence everything is differentiated and well managed:
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-
+Habit_tracker
+    |-----assets
+    |       |--- css
+    |       |     |-- habit.css
+    |       |     |-- home.css
+    |       |     └-- layout.css
+    |       |--- js
+    |       |     |-- habit.js
+    |       |     └-- moment.js
+    |       |--- sass
+    |             |-- habit.scss
+    |             |-- home.scss
+    |             └-- layout.scss
+    |------ config
+    |         └--- mongoose.js
+    |------ controllers
+    |         └--- habit_controllers.js
+    |------ models
+    |         └--- habit.js
+    |------ routers
+    |         └--- index.js
+    |------ views
+    |         |--- habit..ejs
+    |         |--- home.ejs
+    |         └--- layout.ejs
+    |------ .gitignore
+    |------ app.js
+    |------ package.json
+    |------ package-lock.json
+    └------ README.md
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -140,33 +165,7 @@ Don't forget to give the project a star! Thanks again!
 
 
 
-<!-- LICENSE -->
-## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- CONTACT -->
-## Contact
-
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
-
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
-
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
