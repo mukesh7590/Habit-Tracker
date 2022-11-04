@@ -24,12 +24,11 @@ const add = asyncHandler(async (req, res) => {
    var today = moment(new Date(), "DD/MM/YYYY");
 
    // total days from today to start
-   let totalDaysTillDate = today.diff(start, "days")+2;
-   
+   let totalDaysTillDate = today.diff(start, "days") + 2;
 
    //total days between Starting and Ending date
    let totalDays = end.diff(start, "days");
-   console.log("total days => ",totalDays)
+
    // filled the MAP with NONE
    let completionsMap = new Map();
    for (let d = 0; d <= totalDays; d++) {
@@ -90,7 +89,6 @@ const showHabit = asyncHandler(async (req, res) => {
       }
    }
 
-   console.log(arr);
    // redering the Habit and its last 7 days status
    return res.render("habit", {
       habit: habit,
@@ -134,7 +132,6 @@ const takeAction = asyncHandler(async (req, res) => {
    for (d of completionsMap) {
       totalDays++;
       if (d[0] == moment().format("DD/MM/YYYY").toString()) {
-         console.log("break hua hai ", d[0], currentScore);
          if (d[1] == "Done") {
             if (++currentScore > bestScore) {
                bestScore = currentScore;
@@ -156,9 +153,6 @@ const takeAction = asyncHandler(async (req, res) => {
          }
       }
    }
-
-   // console.log("best = " + bestScore + " current => " + currentScore);
-   // console.log("success = " + success + " total => " + totalDays);
 
    await Habit.updateOne(
       { _id: req.params.id },
