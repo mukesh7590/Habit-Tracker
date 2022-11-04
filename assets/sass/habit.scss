@@ -53,6 +53,11 @@
       border-radius: 8px;
       padding: 10px 0px;
       box-shadow: 20px 20px 40px rgba(60, 60, 150, 0.25);
+      display: flex;
+      padding-right: 30px;
+      padding-left: 50px;
+      justify-content: space-between;
+      align-items: center;
       h1 {
          font-size: 30px;
          font-weight: 600;
@@ -109,9 +114,9 @@
 .recordContainer {
    width: 75%;
    // border: 1px solid black;
-   border-radius: 8px;
-   padding: 10px 0px;
-   box-shadow: 20px 20px 40px rgba(60, 60, 150, 0.25);
+   // border-radius: 8px;
+   // padding: 10px 0px;
+   // box-shadow: 20px 20px 40px rgba(60, 60, 150, 0.25);
 }
 
 .recordCard {

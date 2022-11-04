@@ -24,11 +24,12 @@ const add = asyncHandler(async (req, res) => {
    var today = moment(new Date(), "DD/MM/YYYY");
 
    // total days from today to start
-   let totalDaysTillDate = today.diff(start, "days");
+   let totalDaysTillDate = today.diff(start, "days")+2;
+   
 
    //total days between Starting and Ending date
    let totalDays = end.diff(start, "days");
-
+   console.log("total days => ",totalDays)
    // filled the MAP with NONE
    let completionsMap = new Map();
    for (let d = 0; d <= totalDays; d++) {
@@ -61,28 +62,40 @@ const showHabit = asyncHandler(async (req, res) => {
    // find the habit by the ID.
    const habit = await Habit.findById(req.params.id);
    let date = new Date();
+   // array list that stored last 7 days actions records
    let arr = [];
 
+   let tempStr = habit.start.toString().split(" ").slice(0, 4);
+
+   let startDate =
+      tempStr[0] + " " + tempStr[1] + " " + tempStr[2] + " " + tempStr[3];
    // loop for only last 7 days from today
    for (let d = 6; d >= 0; d--) {
-      let st = moment(habit.start).format("DD/MM/YYYY");
       const previous = new Date(date.getTime());
       previous.setDate(date.getDate() - d);
       let dateStr = previous.toString().split(" ");
+
+      // making the previous date
       let tempDate =
          dateStr[0] + " " + dateStr[1] + " " + dateStr[2] + " " + dateStr[3];
-      if (st <= moment(tempDate).format("DD/MM/YYYY")) {
+
+      // compairing the habit start date with previous date
+      if (habit.start < previous || startDate == tempDate) {
+         // fetch the date and actions from the completions MAP
          let action = habit.completions.get(
             moment(tempDate).format("DD/MM/YYYY").toString()
          );
+         // push into the array
          arr.push({ date: tempDate, action: action });
       }
    }
 
+   console.log(arr);
    // redering the Habit and its last 7 days status
    return res.render("habit", {
       habit: habit,
       lastDays: arr,
+      starting: startDate,
    });
 });
 

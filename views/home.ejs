@@ -23,12 +23,12 @@
         </div>
 
         <div class="labelContainer">
-            <button id="addBtn" class="btn btn-primary type=" submit">Add</button>
+            <button id="addBtn" class="btn btn-primary type=" submit">Add Habit</button>
         </div>
     </form>
 </div>
 
-<%if(habitList){%>
+<%if(habitList.length>0){%>
 
     <% for(habit of habitList){ %>
 
@@ -36,7 +36,7 @@
             <div class="habitRow">
                 <div class="habitDsc">
                     <a class="habitShowAction" href="/view/<%= habit.id%>">
-                        <div>
+                        <div style="color:blue;text-transform: capitalize;">
                             <%=habit.habit_name%>
                         </div>
                     </a>
@@ -71,8 +71,6 @@
 
             <%}else{%>
 
-                <div>
-                    There is No Habits in your list.
-                </div>
-
+                <h2 style="color:whitesmoke;text-transform: capitalize; margin-top: 50px;"> There is No
+                    Habits in your list.</h2>
                 <%}%>

@@ -22,7 +22,8 @@ body {
    display: flex;
    justify-content: center;
    background: #1abc9c;
-   height: 100vh;
+
+   min-height: 100vh;
    box-shadow: 20px 20px 40px rgba(60, 60, 150, 0.8);
 }
 
@@ -45,6 +46,7 @@ body {
       display: flex;
       flex-direction: column;
       align-items: center;
+      margin-bottom: 50px;
    }
 }
 

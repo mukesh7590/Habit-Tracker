@@ -3,45 +3,53 @@
 <div class="habitShowContainer">
     <div class="habitContainer">
         <div class="habitDetail">
-            <h1><%=habit.habit_name%></h1>           
+            <h1>
+                <%=habit.habit_name%>
+            </h1>
+
+            <div style="color:blue;">
+                <%=starting%>
+            </div>
         </div>
     </div>
 
     <div id="weekDays">
         <%let i=1;for(day of lastDays){%>
-            <div class="dayRow">
-                <div>
-                    <%=day.date%>
-                </div>
+            <%if(day.action){%>
+                <div class="dayRow">
+                    <div>
+                        <%=day.date%>
+                    </div>
 
-                <%if(day.action=="Done" ){%>
-                    <form action="/active/<%=habit._id%>" method="post" id="formActivity">
-                        <input type="hidden" name="dayBefore" value=<%=(lastDays.length) - i++%> />
-                        <button class="btn btn-success" type="submit">
-                            <%=day.action%>
-                        </button>
-                    </form>
-
-
-                    <%}else if(day.action=="Not-Done" ){%>
+                    <%if(day.action=="Done" ){%>
                         <form action="/active/<%=habit._id%>" method="post" id="formActivity">
                             <input type="hidden" name="dayBefore" value=<%=(lastDays.length) - i++%> />
-                            <button class="btn btn-danger type=" submit">
+                            <button class="btn btn-success" type="submit">
                                 <%=day.action%>
                             </button>
                         </form>
 
-                        <%}else{%>
+
+                        <%}else if(day.action=="Not-Done" ){%>
                             <form action="/active/<%=habit._id%>" method="post" id="formActivity">
                                 <input type="hidden" name="dayBefore" value=<%=(lastDays.length) - i++%> />
-                                <button class="btn btn-warning" type="submit">
+                                <button class="btn btn-danger type=" submit">
                                     <%=day.action%>
                                 </button>
                             </form>
-                            <%}%>
 
-            </div>
-            <%}%>
+                            <%}else{%>
+                                <form action="/active/<%=habit._id%>" method="post" id="formActivity">
+                                    <input type="hidden" name="dayBefore" value=<%=(lastDays.length) - i++%> />
+                                    <button class="btn btn-warning" type="submit">
+                                        <%=day.action%>
+                                    </button>
+                                </form>
+                                <%}%>
+
+                </div>
+                <%}%>
+                    <%}%>
     </div>
 
     <div class="recordContainer">

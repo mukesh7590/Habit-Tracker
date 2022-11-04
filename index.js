@@ -26,7 +26,7 @@ app.use(
    })
 );
 
-// app.use('/public', express.static(path.join(__dirname, 'public')));
+
 
 // ------Statics files ------ //
 app.use(express.static(path.join(__dirname, "./assets")));
