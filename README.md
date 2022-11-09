@@ -2,26 +2,7 @@
 
 -  Coding Ninjas Skill Test Assignment
 
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#contributing">Contributing</a></li>
-  </ol>
-</details>
+
 
 ## About The Project
 
@@ -61,25 +42,7 @@ Here is the Technology Stack of this Application. which I have used to Built thi
 -  Start by installing npm and mongoDB if you don't have them already.
 -  Run the Mongo Server.
 
-### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-
--  npm
-   ```sh
-   npm install npm@latest -g
-   ```
-
-### Installation
-
-1. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Project-Name.git
-   ```
-2. Install NPM packages
-   ```sh
-   npm install
-   ```
 
 ## Directory Structure and flow of The Code
 
